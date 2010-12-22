@@ -1,0 +1,8 @@
+on boot
+    setprop ro.radio.use-ppp no
+    setprop ro.build.product SPH-M900
+    setprop ro.product.device SPH-M900
+
+service SPH-M900-setup /system/etc/init.SPH-M900.sh
+    oneshot
+
