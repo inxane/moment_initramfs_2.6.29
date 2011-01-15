@@ -1,6 +1,6 @@
 #!/system/bin/sh
 # establish root in common system directories for 3rd party applications
-/system/bin/mount -o remount,rw -t rfs /dev/stl5 /system
+/system/bin/mount -o remount,rw /dev/stl5 /system
 /system/bin/rm /system/bin/su
 /system/bin/rm /system/xbin/su
 /system/bin/rm /system/bin/ifconfig
@@ -28,7 +28,7 @@ if [ ! -f "/system/etc/group" ]; then
 	echo "root::0:" > /system/etc/group
 	chmod 0666 /system/etc/group
 fi
-/system/bin/mount -o remount,ro -t rfs /dev/stl5 /system
+/system/bin/mount -o remount,ro /dev/stl5 /system
 
 #provide support for a shell script to protect root access
 if [ -r "/system/protectsu.sh" ]; then

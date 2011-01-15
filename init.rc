@@ -20,7 +20,7 @@ loglevel 3
     symlink /sys/kernel/debug /d
 
 # Kernel version
-    setprop ro.build.display.id "inxane 0.6.2"
+    setprop ro.build.display.id "inxane 0.6.3.1"
 
 # create mountpoints and mount tmpfs on sqlite_stmt_journals
 	mkdir /lib/modules
@@ -381,7 +381,6 @@ service vold /system/bin/vold
 # add 2009.12.01
 # akmd service
 service akmd2 /system/bin/akmd2
-    enabled
     oneshot
 service nexus /system/bin/nexus
     socket nexus stream 0660 root system
@@ -451,14 +450,6 @@ service dbus /system/bin/dbus-daemon --system --nofork
     socket dbus stream 660 bluetooth bluetooth
     user bluetooth
     group bluetooth net_bt_admin
-
-service bluetoothd /system/bin/bluetoothd -n
-    socket bluetooth stream 660 bluetooth bluetooth
-    socket dbus_bluetooth stream 660 bluetooth bluetooth
-    # init.rc does not yet support applying capabilities, so run as root and
-    # let bluetoothd drop uid to bluetooth with the right linux capabilities
-    group bluetooth net_bt_admin misc
-    disabled
 
 # KJH +++++++++++++++++++++++++++++++++++++++++++
  # Start BTLD -----------------------------------------
